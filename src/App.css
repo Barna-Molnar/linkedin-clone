@@ -5,6 +5,7 @@
     background-color: #f3f2ef;
 }
 .app__body {
+    width: 100%;
     display: flex;
     
 }
