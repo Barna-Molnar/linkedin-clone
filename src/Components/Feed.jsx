@@ -31,6 +31,7 @@ const Feed = () => {
             photoUrl: "https://",
             timestamp: firebase.firestore.FieldValue.serverTimestamp()
         });
+        setInput("")
 
     };
     return (
