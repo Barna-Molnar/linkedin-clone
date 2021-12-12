@@ -7,10 +7,21 @@ import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import ChatIcon from '@mui/icons-material/Chat';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import { useDispatch } from 'react-redux';
+import { logout } from '../features/userSlice';
+import { auth } from '../firebase';
 
 
 
 const Header = () => {
+
+
+    const dispatch = useDispatch()
+    const logoutFromApp = ()=> {
+        dispatch(logout())
+        auth.signOut()
+    }
+    
     return (
         <div className='header'>
 
@@ -18,10 +29,7 @@ const Header = () => {
                 <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="" />
                 <div className="header__search">
                     <SearchIcon />
-
-                    {/* Search Icon  */}
-                    <input type="text" />
-
+                    <input type="text" placeholder='Search'/>
                 </div>
             </div>
             <div className="header__right">
@@ -30,7 +38,7 @@ const Header = () => {
             <HeaderOption  Icon={BusinessCenterIcon}  title='Jobs'/>
             <HeaderOption   Icon={ChatIcon} title='Messagging'/>
             <HeaderOption   Icon={NotificationsIcon} title='Notifications'/>
-            <HeaderOption   title='me' avatar='https://www.ndr.de/kultur/film/thelittlethings106_v-quadratl.jpg'/>
+            <HeaderOption   title='me' avatar='https://www.ndr.de/kultur/film/thelittlethings106_v-quadratl.jpg' onClick={logoutFromApp}/>
             </div>
         </div>
     );
