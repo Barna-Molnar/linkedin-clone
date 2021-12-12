@@ -2,14 +2,23 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-right: 20px;
-    color: gray;
+    color: rgba(0,0,0,0.6);
     cursor: pointer;
-    transition: all 0.2s ease-in;
-
+    transition: all 0.1s ease;
 }
-
-.headerOption:hover {
+.headerOption__wrapper {
+    min-width: 80px;
+    min-height: 52px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid transparent;
+    transition: all 0.1s ease;
+}
+.headerOption__wrapper:hover {
+    border-bottom: 2px solid black;
+}
+.headerOption__wrapper:hover .headerOption {
     color: black;
 }
 
@@ -22,4 +31,8 @@
     object-fit: contain;
     height: 25px !important;
     width: 25px !important;
+}
+
+.rightBorder-weak {
+    border-right: 0.5px solid lightgray;
 }
