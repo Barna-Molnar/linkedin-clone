@@ -38,7 +38,7 @@ const Header = () => {
             <HeaderOption  Icon={BusinessCenterIcon}  title='Jobs'/>
             <HeaderOption   Icon={ChatIcon} title='Messagging'/>
             <HeaderOption   Icon={NotificationsIcon} title='Notifications'/>
-            <HeaderOption   title='me' avatar='https://www.ndr.de/kultur/film/thelittlethings106_v-quadratl.jpg' onClick={logoutFromApp}/>
+            <HeaderOption   title='me' avatar onClick={logoutFromApp}/>
             </div>
         </div>
     );
