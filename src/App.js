@@ -1,5 +1,5 @@
-
-import { useEffect } from 'react';
+import styled from 'styled-components';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
 import Feed from './Components/Feed';
@@ -10,10 +10,19 @@ import Widgets from './Components/Widgets';
 import { login, logout, selectUser } from './features/userSlice';
 import { auth } from './firebase';
 
-function App() {
+const StyledLoadingMessage = styled.div`
+  font-size: larger;
+  font-weight: bolder;
+  color: red;
+
+`
+
+
+const  App = ()=>  {
 
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     auth.onAuthStateChanged((userAuth) => {
@@ -25,18 +34,20 @@ function App() {
           displayName: userAuth.displayName,
           photoUrl: userAuth.photoURL,
         }));
+        setLoading(false)
       } else {
         // user is logged out  
         dispatch(logout());
       }
     });
-  }, []);
+  }, [dispatch]);
+
 
   return (
     <div className="app">
       <Header />
-
-      {!user ?
+      {/* {!user && loading && (<StyledLoadingMessage>Auth is being checked..... </StyledLoadingMessage> )} */}
+      {!user && !loading ?
         (<Login />
         ) : (
           <div className="app__body">
