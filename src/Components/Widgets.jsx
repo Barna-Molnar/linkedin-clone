@@ -1,6 +1,6 @@
+import './Widgets.css';
 import { FiberManualRecord, Info } from '@mui/icons-material';
 import React from 'react';
-import './Widgets.css';
 
 const Widgets = () => {
 

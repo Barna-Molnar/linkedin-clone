@@ -1,7 +1,7 @@
+import './App.css';
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import './App.css';
 import Feed from './Components/Feed';
 import Header from './Components/Header';
 import Login from './Components/Login';
@@ -38,16 +38,18 @@ const  App = ()=>  {
       } else {
         // user is logged out  
         dispatch(logout());
+        setLoading(false)
+
       }
     });
-  }, [dispatch]);
+  }, []);
 
 
   return (
     <div className="app">
       <Header />
       {/* {!user && loading && (<StyledLoadingMessage>Auth is being checked..... </StyledLoadingMessage> )} */}
-      {!user && !loading ?
+      {(!user && !loading )?
         (<Login />
         ) : (
           <div className="app__body">
