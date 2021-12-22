@@ -51,7 +51,7 @@
     border: none;
     background: #eef3f8;
     width: 280px;
-    transition: all 0.2s ease-in;
+    transition: all 0.2s ;
 }
 .header__search> input:focus, 
 .header__search> input:active {

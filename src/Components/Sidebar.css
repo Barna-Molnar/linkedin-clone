@@ -50,6 +50,7 @@
 }
 
 .sidebar__stats {
+    min-width: 100%;
     padding: 12px 12px;
     border-bottom: none;
     background-color: white;
