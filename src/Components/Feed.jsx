@@ -132,7 +132,7 @@ const Feed = () => {
                     <InputOption color='#7fc15e' Icon={CalendarViewDay} title='Write article' />
                 </div>
             </div>
-            <FlipMove>
+            {/* <FlipMove> */}
                 {posts.map(({ id, data: { name, description, message, photoUrl } }) => (
                     <Post
                         key={id}
@@ -142,7 +142,7 @@ const Feed = () => {
                         photoUrl={photoUrl}
                     />
                 ))}
-            </FlipMove>
+            {/* </FlipMove> */}
 
         </FeedSection>
     );
