@@ -5,7 +5,7 @@ import { login } from '../features/userSlice';
 import { auth } from '../firebase';
 
 const Login = () => {
-    const [name, setName] = useState(undefined);
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [profilePic, setProfilePic] = useState('');
@@ -56,7 +56,9 @@ const Login = () => {
                     type="text"
                     placeholder='Full name (required if registering)'
                     value={name}
-                    onChange={(e) => setName(e.target.value)} />
+                    onChange={(e) => setName(e.target.value)}
+                    />
+                    
                 <input
                     type="text"
                     placeholder='Profile pic URL (optinonal)'
@@ -64,8 +66,8 @@ const Login = () => {
                     onChange={(e) => setProfilePic(e.target.value)} />
                 <input
                     type="emial"
-                    placeholder='Email' v
-                    alue={email}
+                    placeholder='Email' 
+                    value={email}
                     onChange={(e) => setEmail(e.target.value.trim())} />
                 <input
                     type="password"

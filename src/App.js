@@ -1,5 +1,4 @@
 import './App.css';
-import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Feed from './Components/Feed';
@@ -9,14 +8,6 @@ import SideBar from './Components/SideBar';
 import Widgets from './Components/Widgets';
 import { login, logout, selectUser } from './features/userSlice';
 import { auth } from './firebase';
-
-const StyledLoadingMessage = styled.div`
-  font-size: larger;
-  font-weight: bolder;
-  color: red;
-
-`
-
 
 const  App = ()=>  {
 
@@ -42,7 +33,7 @@ const  App = ()=>  {
 
       }
     });
-  }, []);
+  }, [dispatch]);
 
 
   return (

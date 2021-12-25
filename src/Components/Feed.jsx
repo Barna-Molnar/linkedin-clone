@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-// import './Feed.css';
 import CreateIcon from '@mui/icons-material/Create';
 import InputOption from './InputOption';
 import { CalendarViewDay, EventNote, Image, Subscriptions } from '@mui/icons-material';
@@ -8,7 +7,6 @@ import { db } from '../firebase';
 import firebase from 'firebase/compat/app';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../features/userSlice';
-import FlipMove from 'react-flip-move';
 import styled from 'styled-components';
 import { Avatar } from '@mui/material';
 
@@ -73,17 +71,21 @@ const Feed = () => {
     const [input, setInput] = useState('');
     const user = useSelector(selectUser);
 
+
     useEffect(() => {
-        db.collection('posts')
-            .orderBy('timestamp', 'desc')
-            .onSnapshot((snapshot) => (
-                setPosts(snapshot.docs.map((doc) => ({
-                    id: doc.id,
-                    data: doc.data()
-                }))
-                )
-            ));
-    }, []);
+        if (user) {
+            db.collection('posts')
+                .orderBy('timestamp', 'desc')
+                .onSnapshot((snapshot) => (
+                    setPosts(snapshot.docs.map((doc) => ({
+                        id: doc.id,
+                        data: doc.data()
+                    }))
+                    )
+                ));
+        }
+    
+    }, [user]);
 
     const sendPost = (e) => {
         e.preventDefault();
@@ -102,7 +104,7 @@ const Feed = () => {
         <FeedSection>
             <div className="feed__container">
                 <div className="feed__inputContainer">
-                    <Avatar  className="feed__inputContainer-Avatar" src={user?.photoUrl}>
+                    <Avatar className="feed__inputContainer-Avatar" src={user?.photoUrl}>
                         {user?.displayName[0]}
                     </Avatar>
                     <div className="feed__input">
@@ -110,10 +112,10 @@ const Feed = () => {
                         <form >
 
                             <input type="text"
-                             value={input} 
-                             onChange={(e) => setInput(e.target.value)} 
-                             placeholder='Start a post'
-                             />
+                                value={input}
+                                onChange={(e) => setInput(e.target.value)}
+                                placeholder='Start a post'
+                            />
 
 
                             <button
@@ -132,18 +134,15 @@ const Feed = () => {
                     <InputOption color='#7fc15e' Icon={CalendarViewDay} title='Write article' />
                 </div>
             </div>
-            {/* <FlipMove> */}
-                {posts.map(({ id, data: { name, description, message, photoUrl } }) => (
-                    <Post
-                        key={id}
-                        name={name}
-                        description={description}
-                        message={message}
-                        photoUrl={photoUrl}
-                    />
-                ))}
-            {/* </FlipMove> */}
-
+            {posts.map(({ id, data: { name, description, message, photoUrl } }) => (
+                <Post
+                    key={id}
+                    name={name}
+                    description={description}
+                    message={message}
+                    photoUrl={photoUrl}
+                />
+            ))}
         </FeedSection>
     );
 };

@@ -1,18 +1,18 @@
 import { Avatar } from '@mui/material';
 import './Post.css';
-import React, { forwardRef } from 'react';
+import React from 'react';
 import InputOption from './InputOption';
 import { ThumbUpAltOutlined, ChatOutlined, ShareOutlined, SendOutlined } from '@mui/icons-material';
 import { useSpring, animated } from 'react-spring';
 
 
-const Post = forwardRef(({ name, description, message, photoUrl }, ref) => {
+const Post = ({ name, description, message, photoUrl }) => {
     const grow = useSpring({
-            to: {transform: 'scale(1)'}, 
-            from : {transform: 'scale(0)'}
-    })
+        to: { transform: 'scale(1)' },
+        from: { transform: 'scale(0)' }
+    });
     return (
-        <animated.div style={grow} ref={ref} className='post'>
+        <animated.div style={grow} className='post'>
             <div className="post__header">
                 <Avatar src={photoUrl}>{name[0]}</Avatar>
                 <div className="post__info">
@@ -31,6 +31,6 @@ const Post = forwardRef(({ name, description, message, photoUrl }, ref) => {
             </div>
         </animated.div>
     );
-});
+};
 
 export default Post;
