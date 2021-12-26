@@ -3,7 +3,9 @@
     - React
     - Redux
     - Firebase 
-    - Animation: FlipMove
+        - Auth
+        - Keep track of posts
+    - Animation: React-Spring
 ## The project is hosted on 
  Here:  [Link Here](https://linkedin-clone-d158e.web.app/)
 
